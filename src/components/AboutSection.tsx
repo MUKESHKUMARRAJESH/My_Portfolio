@@ -1,9 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { GraduationCap, Calendar, MapPin } from "lucide-react";
-
-// REMOVED: const stats = [...] (You don't need this anymore)
-// REMOVED: import CountUp (No longer needed)
+import { GraduationCap, Calendar, MapPin, Briefcase } from "lucide-react";
 
 const techStack = [
   { name: "Python", color: "#61DAFB" },
@@ -20,6 +17,30 @@ const techStack = [
   { name: "CNNs", color: "#DC382D" },
 ];
 
+const experience = [
+  {
+    role: "Technical Lead",
+    company: "EduSpine",
+    year: "Jan 2026 - Present",
+    location: "Remote",
+    type: "Full-time",
+  },
+  {
+    role: "Assistant Tech Lead",
+    company: "EduSpine",
+    year: "Aug 2025 - Jan 2026",
+    location: "Coimbatore, Tamil Nadu, India · Remote",
+    type: "Full-time",
+  },
+  {
+    role: "AI Intern",
+    company: "Adhoc Softwares",
+    year: "Jun 2025 - Jul 2025",
+    location: "Coimbatore, Tamil Nadu, India · On-site",
+    type: "Internship",
+  },
+];
+
 const education = [
   {
     degree: "B.Tech Artificial Intelligence and Data Science",
@@ -27,7 +48,6 @@ const education = [
     year: "2023 - 2027",
     location: "Coimbatore, Tamil Nadu, India",
   },
-  // REMOVED: The fake MIT entry
 ];
 
 const AboutSection = () => {
@@ -49,7 +69,8 @@ const AboutSection = () => {
             About <span className="text-gradient">Me</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            An innovative AI Engineer dedicated to building scalable, intelligent systems using Generative AI and full-stack technologies.
+            An innovative AI Engineer dedicated to building scalable, intelligent
+            systems using Generative AI and full-stack technologies.
           </p>
         </motion.div>
 
@@ -63,13 +84,18 @@ const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <h3 className="text-2xl font-semibold mb-4 text-foreground">
-              Turning Ideas Into Reality
+              Engineering the Future of Intelligence
             </h3>
             <p className="text-muted-foreground mb-4 leading-relaxed">
-              I’m an AI Engineer and B.Tech undergraduate driven by a passion for Generative AI and scalable software solutions. Specializing in LLM optimization, RAG architectures, and Full Stack deployment, I focus on building intelligent systems that solve complex problems with high accuracy.
+              I operate at the intersection of Scalable Engineering and Generative AI. 
+              As a Technical Lead and dedicated builder, I don't just write code—I architect intelligent ecosystems. 
+              My expertise lies in taming Large Language Models, optimizing RAG pipelines for precision, 
+              and deploying full-stack solutions that can handle the heat of the real world.
             </p>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              When I’m not engineering custom NLP solutions or optimizing backend architectures , you can find me competing in hackathons or giving back to the community by facilitating technical bootcamps for local schools.
+              Beyond the terminal, I’m a competitive problem solver who thrives in the high-pressure environment of hackathons. 
+              I believe knowledge grows when shared, which is why I dedicate my free time to empowering the next generation of devs through technical bootcamps. 
+              I build to solve, I lead to inspire.
             </p>
           </motion.div>
 
@@ -90,9 +116,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
 
-        {/* REMOVED: The entire Stats Grid section was here */}
-
-        {/* Education Timeline */}
+        {/* Education Timeline - NOW FIRST */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -128,6 +152,53 @@ const AboutSection = () => {
                     <span className="flex items-center gap-1">
                       <MapPin className="w-4 h-4" />
                       {edu.location}
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Experience Timeline - NOW SECOND */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-20"
+        >
+          <h3 className="text-2xl font-semibold mb-8 text-center">
+            <Briefcase className="inline-block mr-2 text-primary" />
+            Experience
+          </h3>
+          <div className="max-w-2xl mx-auto">
+            {experience.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.2 }}
+                className="relative pl-8 pb-8 border-l-2 border-primary/30 last:pb-0"
+              >
+                <div className="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full -translate-x-[9px]" />
+                <div className="glass rounded-xl p-6 ml-4 hover-glow">
+                  <h4 className="text-lg font-semibold text-foreground mb-1">
+                    {exp.role}
+                  </h4>
+                  <p className="text-primary font-medium mb-1">{exp.company}</p>
+                  <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wide">
+                    {exp.type}
+                  </p>
+                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                    <span className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {exp.year}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <MapPin className="w-4 h-4" />
+                      {exp.location}
                     </span>
                   </div>
                 </div>
